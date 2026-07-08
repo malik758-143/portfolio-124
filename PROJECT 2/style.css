@@ -1,0 +1,427 @@
+/* 1. ADD THIS AT THE VERY TOP OF style.css */
+:root {
+    --bg-dark: #11141a;
+    /* Deep slate/charcoal background */
+    --card-dark: #1a1f29;
+    /* Slightly lighter grey for sections/cards */
+    --neon-green: #39ff14;
+    /* Super bright accent color */
+    --text-light: #ffffff;
+    /* Primary text */
+    --text-muted: #a0aec0;
+    /* Secondary text for descriptions */
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background-color: var(--card-dark);
+    border-bottom: 2px solid #242b38;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.nav-link a {
+    color: var(--text-light);
+    text-decoration: none;
+    margin: 0 20px;
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-link a:hover,
+.nav-link a.active {
+    color: var(--neon-green);
+}
+
+.cta-btn {
+    background-color: var(--neon-green);
+    color: #000000;
+    padding: 10px 22px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.2s ease, box-shadow 0.2a ease;
+}
+
+.cta-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px var(--neon-green);
+}
+
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 80vh;
+    padding: 0 8%;
+    background: linear-gradient(rgba(17, 20, 26, 0.6), rgba(17, 20, 26, 0.9));
+}
+
+.hero-content h1 {
+    font-size: 56px;
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.hero-content p {
+    font-size: 18px;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+.hero-btn {
+    display: inline-block;
+    padding: 14px 30px;
+    color: var(--text-light);
+    border: 2px solid var(--text-light);
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.hero-btn:hover {
+    background-color: var(--text-light);
+    color: var(--bg-dark);
+}
+
+.features {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 60px 8%;
+    background-color: var(--bg-dark);
+}
+
+.faeture-card {
+    flex: 1;
+    background-color: var(--card-dark);
+    padding: 30px;
+    border-radius: 8px;
+    border-left: 4px solid var(--neon-green);
+    transition: transform 0.3s ease;
+}
+
+.faeture-card h3 {
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+}
+
+.faeture-card p {
+    font-size: 15px;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+.pricing-section {
+    padding: 80px 8%;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 40px;
+    font-weight: 900;
+    margin-bottom: 50px;
+    letter-spacing: 1px;
+}
+
+.pricing-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    align-items: stretch;
+}
+
+.price-card {
+    flex: 1;
+    background-color: var(--card-dark);
+    padding: 40px 30px;
+    border-radius: 10px;
+    border: 1px solid #242b38;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.price-card.featured {
+    border: 2px solid var(--neon-green);
+    transform: scale(1.03);
+}
+
+.price-card.featured .badge {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--neon-green);
+    color: #000;
+    padding: 5px 15px;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 20px;
+}
+
+.price-card h4 {
+    font-size: 22px;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+.price-card .price {
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--neon-green);
+    margin-bottom: 30px;
+}
+
+.price-card .price span {
+    font-size: 16px;
+    color: var(--text-muted);
+}
+
+.price-card ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.price-card ul li {
+    padding: 10px 0;
+    font-size: 15px;
+}
+
+.price-card ul li.disabled {
+    color: #556275;
+}
+
+/* Plan Button */
+.plan-btn {
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+    color: var(--text-light);
+    border: 2px solid #242b38;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.plan-btn:hover {
+    background-color: var(--text-light);
+    color: var(--bg-dark);
+}
+
+.plan-btn.active-btn {
+    background-color: var(--neon-green);
+    color: #000;
+    border: none;
+}
+
+.plan-btn.active-btn:hover {
+    background-color: #2ecc12;
+}
+/* --- CONTACT PAGE STYLING --- */
+.contact-section {
+    padding: 80px 8%;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+}
+
+.contact-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 60px;
+    width: 100%;
+}
+
+.contact-info, .contact-form-container {
+    flex: 1; /* Splits the view perfectly 50/50 */
+}
+
+.contact-info h2 {
+    font-size: 40px;
+    font-weight: 900;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.contact-info p {
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.info-item {
+    margin-bottom: 20px;
+}
+
+.info-item strong {
+    color: var(--neon-green);
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.info-item p {
+    margin-top: 5px;
+    color: var(--text-light);
+}
+
+/* Form Fields Styling */
+.gym-form {
+    background-color: var(--card-dark);
+    padding: 40px;
+    border-radius: 10px;
+    border: 1px solid #242b38;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-light);
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 12px 15px;
+    background-color: var(--bg-dark);
+    border: 1px solid #242b38;
+    color: var(--text-light);
+    border-radius: 5px;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+/* Brighten the border when typing inside an item */
+.form-group input:focus, .form-group select:focus {
+    border-color: var(--neon-green);
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 14px;
+    background-color: var(--neon-green);
+    color: #000000;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.submit-btn:hover {
+    background-color: #2ecc12;
+}
+/* ==========================================================================
+   📱 MOBILE & TABLET RESPONSIVENESS BLOCK 
+   ========================================================================== */
+
+/* This handles tablets and screens under 968px wide */
+@media screen and (max-width: 968px) {
+    /* 1. Navbar Adjustments */
+    .navbar {
+        padding: 15px 4%;
+    }
+    .nav-link a {
+        margin: 0 10px;
+        font-size: 15px;
+    }
+
+    /* 2. Home Page Hero text downscale */
+    .hero-content h1 {
+        font-size: 42px;
+    }
+
+    /* 3. Stack Layouts from Row to Column */
+    .features, 
+    .pricing-container, 
+    .contact-wrapper {
+        flex-direction: column; /* Stacks cards/columns vertically */
+        gap: 25px;
+        padding: 40px 4%;
+    }
+
+    /* 4. Fix featured card scaling overlap on mobile stack */
+    .price-card.featured {
+        transform: scale(1);
+        margin: 15px 0;
+    }
+}
+
+/* This handles smaller mobile phones under 576px wide */
+@media screen and (max-width: 576px) {
+    /* Hide specific nav links if screen is too narrow, keeping it clean */
+    .navbar {
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    
+    .nav-link {
+        order: 3;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 15px;
+    }
+
+    .nav-link a {
+        margin: 0 12px;
+        font-size: 14px;
+    }
+
+    /* Hero Text adjustments */
+    .hero {
+        padding: 0 4%;
+        min-height: 70vh;
+    }
+
+    .hero-content h1 {
+        font-size: 32px;
+    }
+
+    .hero-content p {
+        font-size: 15px;
+    }
+
+    /* Form interior adjustments */
+    .gym-form {
+        padding: 25px 20px;
+    }
+}

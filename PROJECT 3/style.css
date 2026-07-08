@@ -1,0 +1,345 @@
+/* ==========================================================================
+   🏳️‍🌈 1. GLOBAL DESIGN VARIABLES & RESET
+   ========================================================================== */
+:root {
+    --bg-light: #f9f9fb;       /* Soft luxury cream backdrop */
+    --card-bg: #ffffff;        /* Pure white for containers/cards */
+    --text-dark: #111111;      /* Deep obsidian black for high-end text */
+    --text-muted: #767676;     /* Slate grey for secondary specs/prices */
+    --accent-color: #000000;   /* Solid black accents */
+    --border-color: #e5e5e5;   /* Subtle divider lines */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+}
+
+/* ==========================================================================
+   🛒 2. NAVIGATION BAR & MAIN HEADER
+   ========================================================================== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    background-color: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.logo span {
+    font-weight: 300;
+    color: var(--text-muted);
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0 20px;
+    letter-spacing: 0.5px;
+    transition: color 0.2s ease;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: var(--text-muted);
+}
+
+.cart-icon {
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* STORE SUB-HEADER */
+.store-header {
+    padding: 60px 5% 40px 5%;
+    text-align: left;
+}
+
+.store-header h1 {
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 10px;
+}
+
+.store-header p {
+    color: var(--text-muted);
+    font-size: 16px;
+    max-width: 600px;
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   📐 3. MAIN WRAPPER & SIDEBAR FILTER LAYOUT
+   ========================================================================== */
+.store-container {
+    display: flex;
+    padding: 0 5% 80px 5%;
+    gap: 40px;
+}
+
+/* Left Sidebar Styles */
+.sidebar {
+    width: 240px;
+    flex-shrink: 0; /* Keeps the sidebar from squeezing smaller */
+}
+
+.sidebar h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.filter-group {
+    margin-bottom: 35px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 25px;
+}
+
+.filter-group h4 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.filter-group label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.filter-group label:hover {
+    color: var(--text-dark);
+}
+
+.filter-group input[type="checkbox"],
+.filter-group input[type="radio"] {
+    accent-color: var(--accent-color); /* Turns input ticks clean deep black */
+    width: 16px;
+    height: 16px;
+}
+
+/* ==========================================================================
+   🕸️ 4. THE 4-COLUMN PRODUCT GRID MECHANICS
+   ========================================================================== */
+.product-grid {
+    flex-grow: 1;
+    display: grid;
+    /* This creates a 4-column layout grid layout */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px 20px; /* 30px row spacing, 20px column spacing */
+}
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+}
+
+/* IMAGE CONTAINER WRAPPER WITH OVERLAYS */
+.image-container {
+    background-color: #f2f2f5;
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    aspect-ratio: 1 / 1; /* Forces the image card background to stay a perfect square */
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s ease;
+}
+
+/* Hidden by default, sits waiting underneath */
+.secondary-img {
+    opacity: 0;
+}
+
+/* 🪄 THE HOVER REVEAL EFFECT ENGINE */
+.product-card:hover .primary-img {
+    opacity: 0;
+    transform: scale(1.05); /* Slight clean zoom action */
+}
+
+.product-card:hover .secondary-img {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+/* PRODUCT SPECS CARD BLOCK */
+.product-info {
+    padding: 15px 0 5px 0;
+}
+
+.product-title {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    letter-spacing: -0.2px;
+}
+
+.product-category {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+}
+
+.product-price {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: var(--text-muted);
+    font-weight: 400;
+    margin-left: 6px;
+    font-size: 13px;
+}
+
+/* BADGES (NEW, SALE, SOLD OUT) */
+.badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 10;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 4px 8px;
+    letter-spacing: 0.5px;
+    border-radius: 2px;
+}
+
+.badge.sale { background-color: #e53e3e; color: white; }
+.badge.new { background-color: var(--text-dark); color: white; }
+.badge.sold-out { background-color: #cbd5e0; color: var(--text-dark); }
+
+/* QUICK ADD HOVER BUTTON */
+.quick-add-btn {
+    position: absolute;
+    bottom: -50px; /* Hides it down out of bounds */
+    left: 10px;
+    right: 10px;
+    background-color: var(--card-bg);
+    color: var(--text-dark);
+    border: none;
+    padding: 12px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: bottom 0.3s ease, background-color 0.2s ease;
+    z-index: 15;
+}
+
+/* Pops the button up from the bottom boundary on hover */
+.product-card:hover .quick-add-btn {
+    bottom: 10px;
+}
+
+.quick-add-btn:hover {
+    background-color: var(--text-dark);
+    color: var(--card-bg);
+}/* ==========================================================================
+   📱 STORE RESPONSIVENESS & RESPONSIVE GRID ENGINE
+   ========================================================================== */
+
+/* 1. Large Tablets & Small Desktops (Under 1024px) */
+@media screen and (max-width: 1024px) {
+    .product-grid {
+        /* Drop from 4 columns down to 2 columns seamlessly */
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+/* 2. Small Tablets & Landscape Phones (Under 768px) */
+@media screen and (max-width: 768px) {
+    .store-container {
+        flex-direction: column; /* Stacks the sidebar filter menu ABOVE the items grid */
+        gap: 30px;
+    }
+
+    .sidebar {
+        width: 100%; /* Spans the full width of the screen */
+    }
+
+    /* Convert sidebar filters into a clean horizontal alignment row */
+    .sidebar h3 {
+        margin-bottom: 15px;
+    }
+    
+    .filter-group {
+        display: inline-block;
+        margin-right: 30px;
+        margin-bottom: 10px;
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+}
+
+/* 3. Smartphones (Under 480px) */
+@media screen and (max-width: 480px) {
+    .navbar {
+        padding: 15px 4%;
+    }
+
+    .nav-links {
+        display: none; /* Safely hides cluttered nav links on microscopic screens */
+    }
+
+    .store-header {
+        padding: 40px 4% 20px 4%;
+    }
+
+    .store-header h1 {
+        font-size: 28px;
+    }
+
+    .store-container {
+        padding: 0 4% 60px 4%;
+    }
+
+    .product-grid {
+        /* Drop down to 1 single clean product card per row for zero cramping */
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    
+    /* Ensure the add-to-cart button stays permanently visible on touch mobile screens */
+    .quick-add-btn {
+        bottom: 10px;
+    }
+}
