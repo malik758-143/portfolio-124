@@ -345,3 +345,32 @@ body {
         padding: 20px;
     }
 }
+/* --- MOBILE RESPONSIVE STYLES --- */
+@media (max-width: 768px) {
+    
+    /* 1. Reset your main container padding so text doesn't hit the screen edges */
+    body {
+        padding: 10px;
+    }
+
+    /* 2. Stack navigation links vertically if they are crowding the header */
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    /* 3. Force your grid cards to stack into 1 clean vertical column */
+    .project-grid, .work-gallery, .grid-container { 
+        display: grid;
+        grid-template-columns: 1fr !important; /* Forces 1 item per row */
+        gap: 20px;
+    }
+
+    /* 4. Make hero headers smaller so text doesn't overflow */
+    .hero-content h1 {
+        font-size: 2rem !important;
+        line-height: 1.2;
+    }
+}
